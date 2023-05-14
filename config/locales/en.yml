@@ -2,7 +2,7 @@
 en:
   activerecord:
     models:
-      book: Book
+      book: Show
     attributes:
       book:
         title: Title
@@ -17,6 +17,8 @@ en:
     controllers:
       common:
         notice_create: "%{name} was successfully created."
+        notice_update: "%{name} was successfully updated."
+        notice_destroyed: "%{name} was successfully destroyed."
     button:
       edit: Edit
       back: Back
