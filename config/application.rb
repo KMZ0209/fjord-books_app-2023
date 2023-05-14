@@ -10,7 +10,7 @@ module BooksApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
-
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -20,9 +20,8 @@ module BooksApp
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
-module I18nApp
-  class Application < Rails::Application
-    config.i18n.default_locale = :ja # 追加
-  end
-end
-config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+# module I18nApp
+#   class Application < Rails::Application
+#     # config.i18n.default_locale = :ja # 追加
+#   end
+# end
