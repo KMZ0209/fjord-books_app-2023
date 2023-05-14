@@ -1,4 +1,4 @@
-<h1><%= t('activerecord.views.common.newbook') %></h1>
+<h1><%= Book.human_attribute_name(:newbook) %></h1>
 
 <%= render "form", book: @book %>
 
