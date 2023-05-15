@@ -2,28 +2,31 @@
 en:
   activerecord:
     models:
-      book: Show
+      book: book
     attributes:
       book:
         title: Title
         memo: Memo
         author: Author
         picture: Picture
+        newbook: New book
+        edit: Edit
     views:
       common:
         show: Show
         title_new: "New %{name}"
         edit: Edit
+        newbook: newbook
     controllers:
       common:
-        notice_create: "%{name} was successfully created."
-        notice_update: "%{name} was successfully updated."
-        notice_destroyed: "%{name} was successfully destroyed."
+      notice_create: "%{name} was successfully created."
+      notice_update: "%{name} was successfully updated."
+      notice_destroyed: "%{name} was successfully destroyed."
     button:
       edit: Edit
       back: Back
       show: Show
-      index: Index
+      index: Back to books
       destroy: Delete this book
     errors:
       messages:
@@ -173,9 +176,9 @@ en:
     select:
       prompt: Please select
     submit:
-      create: Create %{model}
-      submit: Save %{model}
-      update: Update %{model}
+      create: Create
+      submit: Save
+      update: Update
   number:
     currency:
       format:
