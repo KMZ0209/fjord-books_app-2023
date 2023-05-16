@@ -1,5 +1,18 @@
 ---
 en:
+  views:
+    button:
+      edit: Edit
+      back: Back
+      show: Show
+      index: Back to books
+      destroy: Delete this book
+      newbook: New book
+  controllers:
+    common:
+      notice_create: "%{name} was successfully created."
+      notice_update: "%{name} was successfully updated."
+      notice_destroyed: "%{name} was successfully destroyed."
   activerecord:
     models:
       book: book
@@ -17,17 +30,6 @@ en:
         title_new: "New %{name}"
         edit: Edit
         newbook: newbook
-    controllers:
-      common:
-      notice_create: "%{name} was successfully created."
-      notice_update: "%{name} was successfully updated."
-      notice_destroyed: "%{name} was successfully destroyed."
-    button:
-      edit: Edit
-      back: Back
-      show: Show
-      index: Back to books
-      destroy: Delete this book
     errors:
       messages:
         record_invalid: 'Validation failed: %{errors}'
