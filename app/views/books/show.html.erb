@@ -3,7 +3,7 @@
 <%= render @book %>
 </div>
 <nav class="page-nav">
-  <%= link_to t('activerecord.button.edit'), edit_book_path(@book) %> |
-  <%= link_to t('activerecord.button.show'), books_path %>
-  <%= button_to t('activerecord.button.destroy'), @book, method: :delete %>
+  <%= link_to t('views.button.edit'), edit_book_path(@book) %> |
+  <%= link_to t('views.button.show'), books_path %>
+  <%= button_to t('views.button.destroy'), @book, method: :delete %>
 </nav>
