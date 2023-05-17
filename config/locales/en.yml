@@ -1,5 +1,12 @@
 ---
 en:
+  views:
+    pagination:
+      first: 'first'
+      last: 'last'
+      previous: 'back'
+      next: 'next'
+      truncate: '...'
   activerecord:
     errors:
       messages:
