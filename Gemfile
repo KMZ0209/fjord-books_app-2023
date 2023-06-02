@@ -79,4 +79,12 @@ group :test do
 end
 
 gem 'carrierwave'
+
+# Gemfile
+gem 'devise'
+gem 'devise-i18n'
 gem 'kaminari'
+
+group :development do
+  gem 'letter_opener_web', '~> 2.0'
+end
