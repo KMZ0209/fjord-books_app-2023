@@ -12,7 +12,6 @@
     <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
   <% end %>
 
-  <%# この1行を追加 %>
   <%= render 'devise/registrations/profile_fields', f: f %>
 
   <div class="field">
