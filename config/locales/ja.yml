@@ -1,12 +1,29 @@
 ---
 ja:
   activerecord:
+    models:
+      book: 本
+    attributes:
+      user:
+        name: 氏名
+        post_code: 郵便番号
+        address: 住所
+        self_introduction: 自己紹介文
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+  layouts:
+    application:
+      menu: メニュー
+      sign_in_as: "%{email} としてログイン中"
+    # devise-i18n-viewsをオーバーライド
+  devise:
+    registrations:
+      edit:
+        title: "アカウント編集"
   date:
     abbr_day_names:
     - 日
@@ -182,6 +199,12 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
   views:
+    pagination:
+      first: '最初'
+      last: '最後'
+      previous: '前'
+      next: '次'
+      truncate: '...'
     common:
       show: "この%{name}を表示"
       edit: "この%{name}を編集"
@@ -194,12 +217,11 @@ ja:
       title_edit: "%{name}の編集"
       error: エラー
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
-    pagination:
-      first: '« 最初'
-      last: '最後 »'
-      previous: '‹ 前'
-      next: '次 ›'
-      truncate: '…'
+      show: 詳細
+      edit: 編集
+      back: 戻る
+      title_show: "%{name}の詳細"
+      sign_out: ログアウト
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
