@@ -5,15 +5,17 @@
     <tr>
     <th><%= User.human_attribute_name(:email) %></th>
     <th><%= User.human_attribute_name(:name) %></th>
+    <th><%= User.human_attribute_name(:user_icon) %></th>
     <th></th>
     </tr>
 </thead>
 
 <tbody>
-    <% @users.each do |user| %>
+    <% @users.with_attached_user_icon.each do |user| %>
     <tr>
         <td><%= user.email %></td>
         <td><%= user.name %></td>
+        <td><% if user.user_icon.attached? %><%= image_tag user.user_icon.variant(resize_to_limit: [100, 100]) %><% end %></td>
         <td><%= link_to t('views.common.show'), user %></td>
     </tr>
     <% end %>
