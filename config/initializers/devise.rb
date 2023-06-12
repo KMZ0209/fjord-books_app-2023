@@ -14,6 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
+
   # config.secret_key = '19ba1849138a13f167149b7dd8308d3c2a769d86b77b47655cd38de93bc6404193ea3e6ec54253c0cbf44a40ff593e2ebc23d165497e402c159088c534287800'
 
   # ==> Controller configuration
@@ -126,6 +127,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
+
   # config.pepper = '56afc46d9e2b8faef20a01b3324c7d3ff3e024e346140343a99dd30501179e5ed646760f58c582add9403cabd3221060c697bf1d8e926bfff9f7b18b293118ca'
 
   # Send a notification to the original email when the user's email is changed.
@@ -178,6 +180,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
+
   config.password_length = 8..128
 
   # Email regex used to validate email formats. It simply asserts that
@@ -266,6 +269,7 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html, :turbo_stream]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
+
   config.sign_out_via = :get
 
   # ==> OmniAuth

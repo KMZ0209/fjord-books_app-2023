@@ -2,7 +2,6 @@
 
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-  # コントローラーで許可されたパラメーターを設定するためのフィルター
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
