@@ -27,7 +27,9 @@
 
   <p>
     <strong><%= User.human_attribute_name(:user_icon) %>:</strong>
-    <% if user.user_icon.attached? %><%= image_tag user.user_icon.variant(resize_to_fit: [100, 100]) %><% end %>
+    <% if user.user_icon.attached? %>
+    <%= image_tag user.user_icon.variant(resize_to_fit: [100, 100]) %>
+    <% end %>
   </p>
 
 </div>
