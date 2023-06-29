@@ -1,20 +1,20 @@
 <div class="comments-container">
-    <strong><%= Comment.model_name.human %>:</strong>
+  <strong><%= Comment.model_name.human %>:</strong>
     <% if comments.any? %>
-    <ul>
+      <ul>
         <% comments.each do |comment| %>
-        <% if comment.persisted? %>
+          <% if comment.persisted? %>
             <li>
-                <%= comment.content %>
-                    (<%= link_to comment.user.name_or_email, comment.user %> - <%= l comment.created_at, format: :short %>)
-                <% if current_user == comment.user %>
-                    <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), polymorphic_path([commentable, comment]), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
-                <% end %>
+              <%= comment.content %>
+              (<%= link_to comment.user.name_or_email, comment.user %> - <%= l comment.created_at, format: :short %>)
+              <% if current_user == comment.user %>
+                <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), polymorphic_path([commentable, comment]), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
+              <% end %>
             </li>
+          <% end %>
         <% end %>
-    <% end %>
-    </ul>
+      </ul>
     <% else %>
-        (<%= t('.no_comments') %>)
-    <% end %>
+    (<%= t('.no_comments') %>)
+  <% end %>
 </div>
