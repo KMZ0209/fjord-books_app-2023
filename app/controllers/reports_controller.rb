@@ -21,7 +21,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
-    @report = Report.find(params[:id])
+    @report = current_user.reports.find(params[:id])
     return if @report.user == current_user
 
     redirect_to new_report_path
@@ -31,7 +31,6 @@ class ReportsController < ApplicationController
   def create
     @report = current_user.reports.build(report_params)
 
-    # respond_to do |format|
     if @report.save
       redirect_to report_url(@report), notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
@@ -53,7 +52,6 @@ class ReportsController < ApplicationController
 
   # DELETE /reports/1 or /reports/1.json
   def destroy
-    @reports = Report.all
     @report = Report.find(params[:id])
     if @report.user != current_user
       redirect_to new_report_path
