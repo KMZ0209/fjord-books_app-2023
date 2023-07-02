@@ -21,7 +21,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
-    @report = current_user.reports.find(params[:id])
+    @report = Report.find(params[:id])
     return if @report.user == current_user
 
     redirect_to new_report_path
