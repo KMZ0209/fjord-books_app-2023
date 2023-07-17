@@ -20,32 +20,23 @@ class Report < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
-  def edit_user(target_user)
+  def editable?(target_user)
     user == target_user
   end
 
-  def created_date
+  def created_on
     created_at.to_date
   end
 
   def create_with_mentions
     Report.transaction do
-      @report = current_user.reports.new(report_params)
-      if @report.save && update_mentions
-        redirect_to @report
-      else
-        render :new, status: :unprocessable_entity
-      end
+      @report.save && update_mentions
     end
   end
 
   def update_with_mentions(params)
     Report.transaction do
-      if update(params) && update_mentions
-        redirect_to @report
-      else
-        render :edit, status: :unprocessable_entity
-      end
+      @report.update(params) && update_mentions
     end
   end
 
