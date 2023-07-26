@@ -30,19 +30,21 @@ class Report < ApplicationRecord
 
   def create_with_mentions
     Report.transaction do
-      @report.save && update_mentions
+      save && update_mentions
     end
   end
 
   def update_with_mentions(params)
     Report.transaction do
-      @report.update(params) && update_mentions
+      update(params) && update_mentions
     end
   end
 
+  private
+
   def update_mentions
     new_mentioned_report_ids = content.scan(%r{http://localhost:3000/reports/(\d+)}).flatten.uniq
-    new_mentioned_reports = Report.where(id: new_mentioned_report_ids).where.not(id: current_user)
+    new_mentioned_reports = Report.where(id: new_mentioned_report_ids).where.not(user:)
     Mention.transaction do
       active_mentions.destroy_all
       new_mentioned_reports.each do |new_mentioned_report|
