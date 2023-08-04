@@ -1,0 +1,18 @@
+<div class="mentions-container">
+  <strong><%= Mention.model_name.human %>:</strong>
+  <% if (mentions = @report.mentioned_reports.order(:id).presence) %>
+    <ul>
+      <% mentions.each do |mention| %>
+        <li>
+        <%= mention.content %>
+          <%= link_to mention.title, report_url(mention) %>
+          <small>
+            (<%= link_to mention.user.name_or_email, mention.user %> - <%= l mention.created_at, format: :short %>)
+          </small>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    (<%= t('.no_mentions') %>)
+  <% end %>
+</div>
