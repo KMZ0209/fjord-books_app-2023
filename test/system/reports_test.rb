@@ -4,48 +4,55 @@ require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
-    @report = reports(:test_report)
-
     visit root_url
     fill_in 'Eメール', with: 'alice@example.com'
     fill_in 'パスワード', with: 'password'
     click_on 'ログイン'
   end
 
-  # test '#日報の一覧に戻る' do
-  #   visit reports_url
-  #   assert_selector 'h1', text: '日報の一覧'
-  # end
-
-  test '#日報の新規作成' do
+  test '日報の一覧を見るテスト' do
     click_on '日報'
-    visit reports_path
+    visit reports_url
+    assert_selector 'h1', text: '日報の一覧'
+  end
+
+  test '日報の新規作成テスト' do
+    click_on '日報'
     click_on '日報の新規作成'
     fill_in 'タイトル', with: '日報テスト'
-    fill_in '内容', with: '日報テストです！！'
-    # # fill_in '作成者', with: @report.user
+    fill_in '内容', with: '日報テストです！'
     click_button '登録する'
-
     assert_text '日報が作成されました。'
+    assert_text '日報テスト'
+    assert_text '日報テストです！'
   end
 
-  test '#この日報を編集' do
+  test '日報を編集するテスト' do
     click_on '日報'
-    visit reports_path
-    click_on 'この日報を表示'
+    visit reports_url
+    assert_selector 'h1', text: '日報の一覧'
+    assert_text '日報テスト'
+    assert_text '日報テストです！'
+    first(:link_or_button, 'この日報を表示').click
     click_on 'この日報を編集'
-    fill_in 'タイトル', with: @report.title
-    fill_in '内容', with: @report.content
-    # fill_in '作成者', with: user.user_id
+    fill_in 'タイトル', with: '日報テスト編集'
+    fill_in '内容', with: '日報テストです！編集'
     click_button '更新する'
     assert_text '日報が更新されました。'
+    assert_text '日報テスト編集'
+    assert_text '日報テストです！編集'
   end
 
-  test '#この日報を削除' do
+  test '日報を削除するテスト' do
     click_on '日報'
-    visit reports_path
-    click_on 'この日報を表示'
+    visit reports_url
+    assert_selector 'h1', text: '日報の一覧'
+    assert_text '日報テスト'
+    assert_text '日報テストです！'
+    first(:link_or_button, 'この日報を表示').click
     click_button 'この日報を削除'
     assert_text '日報が削除されました。'
+    assert_no_text '日報テスト'
+    assert_no_text '日報テストです！'
   end
 end

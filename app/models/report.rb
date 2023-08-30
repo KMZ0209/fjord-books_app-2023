@@ -23,6 +23,18 @@ class Report < ApplicationRecord
     created_at.to_date
   end
 
+  def create_with_mentions
+    Report.transaction do
+      save && update_mentions
+    end
+  end
+
+  def update_with_mentions(params)
+    Report.transaction do
+      update(params) && update_mentions
+    end
+  end
+
   private
 
   MENTION_REGEXP = %r{http://localhost:3000/reports/(\d+)}
