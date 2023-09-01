@@ -8,7 +8,6 @@ class ReportTest < ActiveSupport::TestCase
     target_user = users(:alice)
     assert report.editable?(target_user)
 
-    report = reports(:alices_report)
     target_user = users(:bob)
     assert_not report.editable?(target_user)
   end

@@ -7,9 +7,7 @@ class UserTest < ActiveSupport::TestCase
     user = users(:alice)
     assert_equal 'alice@example.com', user.name_or_email
 
-    user.name = 'alice'
-    user.save
-    user.reload
+    user.update!(name: 'alice')
 
     assert_equal 'alice', user.name_or_email
   end

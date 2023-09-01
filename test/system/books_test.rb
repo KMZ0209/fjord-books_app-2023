@@ -1,52 +1,52 @@
-frozen_string_literal: true
+# frozen_string_literal: true
 
 require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
-    @book = books(:cherry_book)
-
     visit root_path
     fill_in 'Eメール', with: 'alice@example.com'
     fill_in 'パスワード', with: 'password'
     click_on 'ログイン'
   end
 
-  test '#本の一覧に戻る' do
-    visit books_url
+  test '#本の一覧を見る' do
     assert_selector 'h1', text: '本の一覧'
+    assert_selector 'div#books', text: 'タイトル:'
+    assert_selector 'div#books', text: 'メモ:'
+    assert_selector 'div#books', text: '著者:'
+    assert_selector 'div#books', text: '画像:'
   end
 
   test '#本の新規作成' do
-    visit new_book_path(@book)
-    click_on '新規作成'
-
-    fill_in 'タイトル', with: 'Ruby超入門'
-    fill_in 'メモ', with: 'すごくわかりやすい！！'
-    fill_in '著者', with: 'igaigaさん'
-    click_on '登録する'
-
+    click_on '本'
+    click_on '本の新規作成'
+    fill_in 'タイトル', with: '本の新規作成テスト'
+    fill_in 'メモ', with: '本の新規作成テストです！'
+    click_button '登録する'
     assert_text '本が作成されました。'
-    click_on '本の一覧に戻る'
+    assert_text '本の新規作成テスト'
+    assert_text '本の新規作成テストです！'
   end
 
   test '#本の編集' do
-    visit edit_book_path(@book)
-    click_link 'この本を編集'
-
-    fill_in 'タイトル', with: @book.title
-    fill_in 'メモ', with: @book.memo
-    fill_in '著者', with: @book.author
-    click_on '更新する'
-
+    click_on '本'
+    click_link('この本を表示', match: :first)
+    click_on 'この本を編集'
+    fill_in 'タイトル', with: '本の編集'
+    fill_in 'メモ', with: '本の編集テストです！'
+    click_button '更新する'
     assert_text '本が更新されました。'
-    click_on '本の一覧に戻る'
+    assert_text '本の編集'
+    assert_text '本の編集テストです！'
   end
 
   test '#本を削除' do
-    visit book_url(@book)
+    click_on '本'
+    click_link('この本を表示', match: :first)
     click_button 'この本を削除'
-
     assert_text '本が削除されました。'
+    assert_no_text '本のテスト'
+    assert_no_text '本のテストです！'
   end
 end
