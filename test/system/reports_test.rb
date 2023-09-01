@@ -10,13 +10,13 @@ class ReportsTest < ApplicationSystemTestCase
     click_on 'ログイン'
   end
 
-  test '日報の一覧を見るテスト' do
+  test '日報の一覧を見る' do
     click_on '日報'
     visit reports_url
     assert_selector 'h1', text: '日報の一覧'
   end
 
-  test '日報の新規作成テスト' do
+  test '日報の新規作成' do
     click_on '日報'
     click_on '日報の新規作成'
     fill_in 'タイトル', with: '日報テスト'
@@ -27,7 +27,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text '日報テストです！'
   end
 
-  test '日報を編集するテスト' do
+  test '日報を編集する' do
     click_on '日報'
     visit reports_url
     assert_selector 'h1', text: '日報の一覧'
@@ -43,7 +43,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text '日報テストです！編集'
   end
 
-  test '日報を削除するテスト' do
+  test '日報を削除する' do
     click_on '日報'
     visit reports_url
     assert_selector 'h1', text: '日報の一覧'
