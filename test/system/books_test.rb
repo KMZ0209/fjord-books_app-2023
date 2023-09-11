@@ -10,7 +10,7 @@ class BooksTest < ApplicationSystemTestCase
     click_on 'ログイン'
   end
 
-  test '#本の一覧を見る' do
+  test '本の一覧を見る' do
     assert_selector 'h1', text: '本の一覧'
     assert_selector 'div#books', text: 'タイトル:'
     assert_selector 'div#books', text: 'メモ:'
@@ -18,7 +18,7 @@ class BooksTest < ApplicationSystemTestCase
     assert_selector 'div#books', text: '画像:'
   end
 
-  test '#本の新規作成' do
+  test '本の新規作成' do
     click_on '本'
     click_on '本の新規作成'
     fill_in 'タイトル', with: '本の新規作成テスト'
@@ -29,9 +29,9 @@ class BooksTest < ApplicationSystemTestCase
     assert_text '本の新規作成テストです！'
   end
 
-  test '#本の編集' do
+  test '本の編集' do
     click_on '本'
-    click_link('この本を表示', match: :first)
+    click_link 'この本を表示', match: :first
     click_on 'この本を編集'
     fill_in 'タイトル', with: '本の編集'
     fill_in 'メモ', with: '本の編集テストです！'
@@ -41,9 +41,9 @@ class BooksTest < ApplicationSystemTestCase
     assert_text '本の編集テストです！'
   end
 
-  test '#本を削除' do
+  test '本を削除' do
     click_on '本'
-    click_link('この本を表示', match: :first)
+    click_link 'この本を表示', match: :first
     click_button 'この本を削除'
     assert_text '本が削除されました。'
     assert_no_text '本のテスト'

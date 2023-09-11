@@ -8,7 +8,6 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'alice@example.com', user.name_or_email
 
     user.update!(name: 'alice')
-
     assert_equal 'alice', user.name_or_email
   end
 end

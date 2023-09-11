@@ -32,7 +32,7 @@ class ReportsTest < ApplicationSystemTestCase
 
   test '日報を編集する' do
     click_on '日報'
-    click_link('この日報を表示', match: :first)
+    click_link 'この日報を表示', match: :first
     click_on 'この日報を編集'
     fill_in 'タイトル', with: '日報テスト編集'
     fill_in '内容', with: '日報テストです！編集'
@@ -44,7 +44,7 @@ class ReportsTest < ApplicationSystemTestCase
 
   test '日報を削除する' do
     click_on '日報'
-    click_link('この日報を表示', match: :first)
+    click_link 'この日報を表示', match: :first
     click_button 'この日報を削除'
     assert_text '日報が削除されました。'
     assert_no_text '日報テスト'
