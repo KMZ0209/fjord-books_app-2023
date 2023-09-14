@@ -3,13 +3,18 @@
 require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
-  test '#editable?' do
+  test 'editable?' do
     report = reports(:alices_report)
     target_user = users(:alice)
     assert report.editable?(target_user)
 
     target_user = users(:bob)
     assert_not report.editable?(target_user)
+  end
+
+  test 'created_on' do
+    report = Report.create(content: '新しいレポート内容', created_at: Time.zone.local(2023, 9, 11, 10, 0, 0))
+    assert_equal Date.new(2023, 9, 11), report.created_on
   end
 
   test 'create_with_mentions' do
