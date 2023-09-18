@@ -4,13 +4,4 @@ alices_report:
   title: 日報テスト
   content: 日報テストです！
   user: alice
-
-mention_to:
-  title: 言及した
-  content: 言及した内容
-  user: alice
-
-mentioned_by:
-  title: 言及された
-  content: 言及された内容
-  user: bob
+  created_at: <%= Time.zone.local(2023, 9, 11, 10, 0, 0) %>

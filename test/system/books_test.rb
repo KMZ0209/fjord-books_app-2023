@@ -12,10 +12,9 @@ class BooksTest < ApplicationSystemTestCase
 
   test '本の一覧を見る' do
     assert_selector 'h1', text: '本の一覧'
-    assert_selector 'div#books', text: 'タイトル:'
-    assert_selector 'div#books', text: 'メモ:'
-    assert_selector 'div#books', text: '著者:'
-    assert_selector 'div#books', text: '画像:'
+    assert_text 'プロを目指す人のためのRuby入門'
+    assert_text '名著です！！'
+    assert_text 'alice'
   end
 
   test '本の新規作成' do
