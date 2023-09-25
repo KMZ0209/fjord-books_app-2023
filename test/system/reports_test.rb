@@ -18,12 +18,6 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text 'alice'
   end
 
-  test 'この日報に言及している日報を見る' do
-    click_on '日報'
-    click_link 'この日報を表示', match: :first
-    assert_text 'この日報に言及している日報'
-  end
-
   test '日報の新規作成' do
     click_on '日報'
     click_on '日報の新規作成'

@@ -1,3 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+mention_carols_report_to_bobs_report:
+  mentioned_by_id: 1
+  mention_to_id: 2
 
+mention_bobs_report_to_carols_report:
+  mentioned_by_id: 2
+  mention_to_id: 1

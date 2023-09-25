@@ -12,7 +12,7 @@ class ReportTest < ActiveSupport::TestCase
     assert_not report.editable?(target_user)
   end
 
-  test '作成された日を確認' do
+  test '#created_on' do
     report = reports(:alices_report)
     assert_equal Date.new(2023, 9, 11), report.created_on
   end
