@@ -15,4 +15,7 @@ class ReportMentionTest < ActiveSupport::TestCase
     )
     assert_not duplicate_mention.valid?
   end
+
+  test '' do
+  end
 end
