@@ -21,13 +21,13 @@ class ReportTest < ActiveSupport::TestCase
     user = users(:alice)
     report1 = reports(:alices_report)
     report2 = reports(:bobs_report)
-    report = Report.new(title: '言及テスト', content: 'http://localhost:3000/reports/2', user:))
+    report = Report.new(title: '言及テスト', content: 'http://localhost:3000/reports/2', user:)
 
     assert_difference 'ReportMention.count', 1 do
       report.save
     end
 
-    assert_equal [report2], report.active_mentions.map(&:mentioned_by)
     assert_equal [report2], report.mentioning_reports
+    assert_includes report2.mentioned_reports, report
   end
 end

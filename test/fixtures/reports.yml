@@ -1,20 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 carols_report:
+  id: 1
   title: 言及テスト
   content: carolの日報本文 'http://localhost:3000/reports/2'
   user: carol
-  id: 1
 
 bobs_report:
+  id: 2
   title: 言及された日報
   content: bobの日報本文
   user: bob
-  id: 2
+
 
 alices_report:
+  id: 3
   title: 日報テスト
   content: 日報テストです！
   user: alice
   created_at: <%= Time.zone.local(2023, 9, 11, 10, 0, 0) %>
-  id: 3
