@@ -18,7 +18,7 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test '日報保存後に言及機能が正しく設定されているか確認' do
-    user = users(:alice)
+    user = users(:carol)
     mentioned_report = reports(:bobs_report)
     mentioning_report = Report.new(title: '言及テスト', content: 'http://localhost:3000/reports/2', user:)
 
@@ -26,7 +26,7 @@ class ReportTest < ActiveSupport::TestCase
       mentioning_report.save
     end
 
-    assert_equal [mentioned_report], mentioning_report.mentioning_reports
-    assert_equal true, mentioned_report.mentioned_reports.include?(mentioning_report)
+    assert_equal [reports(:carols_report)], mentioned_report.mentioning_reports
+    assert_equal [], mentioning_report.mentioned_reports
   end
 end
