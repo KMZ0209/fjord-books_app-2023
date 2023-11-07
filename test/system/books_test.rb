@@ -4,42 +4,48 @@ require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
-    @book = books(:one)
+    visit root_path
+    fill_in 'Eメール', with: 'alice@example.com'
+    fill_in 'パスワード', with: 'password'
+    click_on 'ログイン'
   end
 
-  test 'visiting the index' do
-    visit books_url
-    assert_selector 'h1', text: 'Books'
+  test '本の一覧を見る' do
+    assert_selector 'h1', text: '本の一覧'
+    assert_text 'プロを目指す人のためのRuby入門'
+    assert_text '名著です！！'
+    assert_text 'alice'
   end
 
-  test 'should create book' do
-    visit books_url
-    click_on 'New book'
-
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Create Book'
-
-    assert_text 'Book was successfully created'
-    click_on 'Back'
+  test '本の新規作成' do
+    click_on '本'
+    click_on '本の新規作成'
+    fill_in 'タイトル', with: '本の新規作成テスト'
+    fill_in 'メモ', with: '本の新規作成テストです！'
+    click_button '登録する'
+    assert_text '本が作成されました。'
+    assert_text '本の新規作成テスト'
+    assert_text '本の新規作成テストです！'
   end
 
-  test 'should update Book' do
-    visit book_url(@book)
-    click_on 'Edit this book', match: :first
-
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Update Book'
-
-    assert_text 'Book was successfully updated'
-    click_on 'Back'
+  test '本の編集' do
+    click_on '本'
+    click_link 'この本を表示', match: :first
+    click_on 'この本を編集'
+    fill_in 'タイトル', with: '本の編集'
+    fill_in 'メモ', with: '本の編集テストです！'
+    click_button '更新する'
+    assert_text '本が更新されました。'
+    assert_text '本の編集'
+    assert_text '本の編集テストです！'
   end
 
-  test 'should destroy Book' do
-    visit book_url(@book)
-    click_on 'Destroy this book', match: :first
-
-    assert_text 'Book was successfully destroyed'
+  test '本を削除' do
+    click_on '本'
+    click_link 'この本を表示', match: :first
+    click_button 'この本を削除'
+    assert_text '本が削除されました。'
+    assert_no_text '本のテスト'
+    assert_no_text '本のテストです！'
   end
 end
